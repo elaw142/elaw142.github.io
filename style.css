@@ -1,6 +1,6 @@
 :root {
-    --text-colour: rgb(252, 237, 242);
-    --shadow-colour: rgb(80, 80, 80);
+  --text-colour: rgb(252, 237, 242);
+  --shadow-colour: rgb(160, 122, 135);
 }
 
 @font-face {
@@ -18,11 +18,11 @@ body {
   min-height: 100vh;
   background: linear-gradient(
     135deg,
-    #F6C6DE,
-    #F2B5D4,
+    #f6c6de,
+    #f2b5d4,
     #fcedf2,
-    #C5CCF6,
-    #FED8F1
+    #c5ccf6,
+    #fed8f1
   );
   background-size: 400% 400%;
   animation: gradient 15s ease infinite;
@@ -45,10 +45,24 @@ h1 {
   font-family: "Excelorate";
   font-size: 100px;
   text-align: center;
-  color: var(--text-colour);
-  text-shadow: 1px 1px 0 var(--shadow-colour), 2px 2px 0 var(--shadow-colour), 3px 3px 0 var(--shadow-colour), 4px 4px 0 var(--shadow-colour),
-    5px 5px 0 var(--shadow-colour), 6px 6px 0 var(--shadow-colour), 7px 7px 0 var(--shadow-colour), 8px 8px 0 var(--shadow-colour), 9px 9px 0 var(--shadow-colour),
-    10px 10px 0 var(--shadow-colour);
+  padding: 0.1em;
+  background: -webkit-linear-gradient(
+    135deg,
+    #f6c6de,
+    #f2b5d4,
+    #fcedf2,
+    #c5ccf6,
+    #fed8f1
+  );
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+    filter: drop-shadow(1px -1px 0 var(--shadow-colour))
+    drop-shadow(2px -2px 0 var(--shadow-colour))
+    drop-shadow(3px -3px 0 var(--shadow-colour))
+    drop-shadow(4px -4px 0 var(--shadow-colour))
+    drop-shadow(5px -5px 0 var(--shadow-colour))
 }
 
 .main-container {
