@@ -27,6 +27,10 @@ body {
   background-size: 400% 400%;
   animation: gradient 15s ease infinite;
   height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 @keyframes gradient {
@@ -58,11 +62,11 @@ h1 {
   animation: gradient 15s ease infinite;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-    filter: drop-shadow(1px -1px 0 var(--shadow-colour))
+  filter: drop-shadow(1px -1px 0 var(--shadow-colour))
     drop-shadow(2px -2px 0 var(--shadow-colour))
     drop-shadow(3px -3px 0 var(--shadow-colour))
     drop-shadow(4px -4px 0 var(--shadow-colour))
-    drop-shadow(5px -5px 0 var(--shadow-colour))
+    drop-shadow(5px -5px 0 var(--shadow-colour));
 }
 
 .main-container {
@@ -71,19 +75,67 @@ h1 {
   left: 25px;
   right: 25px;
   bottom: 25px;
-
   background-color: rgba(20, 20, 20, 0.95);
   border-radius: 16px;
-
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
-
   border: 1px solid rgba(255, 255, 255, 0.3);
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 0 20px rgba(255, 255, 255, 0.5),
     inset 0 0 20px rgba(255, 255, 255, 0.2);
-
   display: flex;
   justify-content: center;
   align-items: center;
-  align-content: center;
+}
+
+#buttons {
+  position: fixed;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 50px;
+}
+
+.hidden {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.btn {
+  font-family: "Excelorate";
+  font-size: 35px;
+  text-align: center;
+  padding: 0.1em;
+  background: -webkit-linear-gradient(
+    135deg,
+    #f6c6de,
+    #f2b5d4,
+    #fcedf2,
+    #c5ccf6,
+    #fed8f1
+  );
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(1px -1px 0 var(--shadow-colour))
+    drop-shadow(2px -2px 0 var(--shadow-colour))
+    drop-shadow(3px -3px 0 var(--shadow-colour));
+  transition: all 0.3s ease-in-out;
+}
+
+.btn i {
+  font-size: 26px;
+}
+
+.btn:hover {
+  /* background: #ff4d94; */
+  transform: scale(1.1);
+  transition: transform 0.3s ease-in-out;
 }
