@@ -3,11 +3,6 @@
   --shadow-colour: rgb(160, 122, 135);
 }
 
-@font-face {
-  font-family: "Excelorate";
-  src: url("../static/fonts/excelorate-font.otf");
-}
-
 * {
   margin: 0;
   padding: 0;
