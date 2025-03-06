@@ -1,0 +1,158 @@
+:root {
+  --text-colour: rgb(252, 237, 242);
+  --shadow-colour: rgb(160, 122, 135);
+}
+
+@font-face {
+  font-family: "Excelorate";
+  src: url("../static/fonts/excelorate-font.otf");
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  background: rgba(225, 225, 225, 0.95);
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
+}
+
+body::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    repeating-linear-gradient(0deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1) 1px, transparent 1px, transparent 20px),
+    repeating-linear-gradient(90deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1) 1px, transparent 1px, transparent 20px);
+  pointer-events: none;
+  z-index: -1;
+}
+
+.main-container {
+  position: fixed;
+  top: 50px;
+  left: 200px;
+  right: 100px;
+  bottom: 100px;
+  background: #c0c0c0;
+  border: 2px solid #000;
+  box-shadow: 2px 2px 0 #fff, 4px 4px 0 #000;
+  border-radius: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+canvas.webgl {
+  width: 100%;
+  height: calc(100% - 20px);
+}
+
+.github-window,
+.cv-window {
+  position: fixed;
+  width: 200px;
+  background: #c0c0c0;
+  border: 2px solid #000;
+  box-shadow: 2px 2px 0 #fff, 4px 4px 0 #000;
+  font-family: "Arial", sans-serif;
+  animation: float 3s ease-in-out infinite;
+  opacity: 0;
+  transform: scale(0.8);
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+.github-window {
+  top: 200px;
+  left: 75px;
+}
+
+.cv-window {
+  bottom: 125px;
+  right: 200px;
+}
+
+.github-window.visible,
+.cv-window.visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.window-header {
+  background: linear-gradient(90deg, #000080, #1084d0);
+  color: #fff;
+  padding: 4px;
+  font-size: 14px;
+  position: relative;
+}
+
+.window-content {
+  padding: 10px;
+  font-size: 12px;
+  color: #000;
+  background: linear-gradient(135deg, #e0e0e0, #f0f0f0); /* Subtle gradient */
+  border-top: 1px solid #000; /* Add a border for definition */
+  position: relative;
+}
+
+.btn {
+  display: inline-block;
+  font-family: "Arial", sans-serif;
+  font-size: 12px;
+  color: #fff;
+  background: linear-gradient(45deg, #ff69b4, #00ffff); /* Neon gradient */
+  padding: 5px 10px;
+  text-decoration: none;
+  border: 1px solid #000;
+  box-shadow: 1px 1px 0 #fff, 2px 2px 0 #000;
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.btn:hover {
+  transform: scale(1.05);
+  filter: brightness(1.2); /* Brighten on hover */
+  animation: glitch 0.3s infinite;
+}
+
+@keyframes glitch {
+  0% { transform: translate(0); }
+  20% { transform: translate(-0.75px, 0.75px); }
+  40% { transform: translate(-0.75px, -0.75px); }
+  60% { transform: translate(0.75px, 0.75px); }
+  80% { transform: translate(0.75px, -0.75px); }
+  100% { transform: translate(0); }
+}
+
+.window-close {
+  position: absolute;
+  top: 2px;
+  right: 4px;
+  font-family: "Arial", sans-serif;
+  font-weight: bold;
+  font-size: 12px;
+  color: #fff;
+  background: #ff0000;
+  width: 14px;
+  height: 14px;
+  text-align: center;
+  line-height: 14px;
+  border: 1px solid #000;
+  box-shadow: 1px 1px 0 #fff, 2px 2px 0 #000;
+  cursor: default;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-10px) scale(1); }
+}
