@@ -35,6 +35,8 @@ jobs:
         uses: actions/setup-node@v4
       - name: Install Dependencies
         run: npm install
+      - name: Install Vite Globally
+        run: npm install -g vite
       - name: Build App
         run: npm run build
       - name: Setup Pages
