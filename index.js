@@ -164,6 +164,6 @@ document.addEventListener("DOMContentLoaded", () => {
     document.querySelector(".github-window").classList.add("visible");
     setTimeout(() => {
       document.querySelector(".cv-window").classList.add("visible");
-    }, 500); // Stagger the CV window by 0.5 seconds for a playful effect
+    }, 1000); // Stagger the CV window by 0.5 seconds for a playful effect
   }, 2500); // Initial delay of 2.5 seconds
 });
