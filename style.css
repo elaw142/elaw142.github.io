@@ -128,8 +128,8 @@ canvas.webgl {
   display: inline-block;
   font-family: "orbitron", "Arial", sans-serif;
   font-size: 16px;
-  color: #fff;
-  background: linear-gradient(45deg, #ff69b4, #00ffff);
+  color: #000;
+  background: linear-gradient(45deg,rgb(200, 255, 0), #00ffff);
   padding: 5px 10px;
   text-decoration: none;
   border: 1px solid #000;

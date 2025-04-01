@@ -35,6 +35,10 @@ matcapTexture.colorSpace = THREE.SRGBColorSpace;
  */
 const fontLoader = new FontLoader();
 
+// Create a container for the text and donuts
+const sceneContainer = new THREE.Group();
+scene.add(sceneContainer);
+
 // Font loading
 fontLoader.load("./fonts/excelorate_regular.json", (font) => {
   const textGeometry = new TextGeometry("Elliot Lawrence", {
@@ -57,7 +61,7 @@ fontLoader.load("./fonts/excelorate_regular.json", (font) => {
     wireframe: true,
   });
   const text = new THREE.Mesh(textGeometry, material);
-  scene.add(text);
+  sceneContainer.add(text);
 
   const donutGeometry = new THREE.SphereGeometry(0.05);
 
@@ -74,7 +78,7 @@ fontLoader.load("./fonts/excelorate_regular.json", (font) => {
     donut.rotation.z = Math.random() * Math.PI * 2;
     const scale = Math.random();
     donut.scale.set(scale, scale, scale);
-    scene.add(donut);
+    sceneContainer.add(donut);
   }
 });
 
@@ -98,6 +102,23 @@ camera.position.x = 0;
 camera.position.y = 0;
 camera.position.z = 2.5; // Positioned slightly further back
 scene.add(camera);
+
+/**
+ * Mouse tracking
+ */
+const mouse = {
+  x: 0,
+  y: 0,
+  targetX: 0,
+  targetY: 0
+};
+
+// Track mouse movement
+window.addEventListener('mousemove', (event) => {
+  // Convert mouse position to normalized device coordinates (-1 to +1)
+  mouse.targetX = (event.clientX / sizes.width) * 2 - 1;
+  mouse.targetY = -((event.clientY / sizes.height) * 2 - 1);
+});
 
 /**
  * Renderer
@@ -135,6 +156,16 @@ controls.dampingFactor = 0.05; // Smoother damping
 controls.enableZoom = true;
 controls.minDistance = 1;
 controls.maxDistance = 10;
+controls.enabled = false; // Disable controls initially
+
+// Toggle between mouse follow and orbit controls
+let mouseFollowEnabled = true;
+window.addEventListener('keydown', (event) => {
+  if (event.code === 'Space') {
+    mouseFollowEnabled = !mouseFollowEnabled;
+    controls.enabled = !mouseFollowEnabled;
+  }
+});
 
 /**
  * Animate
@@ -144,10 +175,24 @@ const clock = new THREE.Clock();
 const tick = () => {
   const elapsedTime = clock.getElapsedTime();
 
-  // Optional: Add some gentle rotation to the scene
-  scene.rotation.y = elapsedTime * 0.1;
+  // Smooth mouse following with easing
+  if (mouseFollowEnabled) {
+    // Smooth interpolation for mouse movement
+    mouse.x += (mouse.targetX - mouse.x) * 0.1;
+    mouse.y += (mouse.targetY - mouse.y) * 0.1;
+    
+    // Apply rotation to the scene container
+    sceneContainer.rotation.y = mouse.x * 0.5 / 5;
+    sceneContainer.rotation.x = -mouse.y * 0.3 / 5;
+    
+    // Optional: Add some gentle continuous rotation
+    // sceneContainer.rotation.y += elapsedTime * 0.02;
+  } else {
+    // If using orbit controls, just add a subtle rotation
+    sceneContainer.rotation.y = elapsedTime * 0.1;
+  }
 
-  // Update controls
+  // Update controls (only active when mouseFollowEnabled is false)
   controls.update();
 
   // Render
@@ -164,6 +209,6 @@ document.addEventListener("DOMContentLoaded", () => {
     document.querySelector(".github-window").classList.add("visible");
     setTimeout(() => {
       document.querySelector(".cv-window").classList.add("visible");
-    }, 1000); // Stagger the CV window by 0.5 seconds for a playful effect
-  }, 2500); // Initial delay of 2.5 seconds
+    }, 750);
+  }, 1000);
 });
