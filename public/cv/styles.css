@@ -1,0 +1,443 @@
+:root {
+  --text-colour: rgb(252, 237, 242);
+  --shadow-colour: rgb(160, 122, 135);
+}
+
+@font-face {
+  font-family: "toxigenesis";
+  src: url("static/fonts/toxigenesis.rg-bold.otf") format("opentype");
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  background: rgba(225, 225, 225, 0.95);
+  height: 100vh;
+  position: relative;
+  font-family: Arial, sans-serif;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #e1e1e1;
+  background-image: linear-gradient(to right, #ccc 1px, transparent 1px),
+    linear-gradient(to bottom, #ccc 1px, transparent 1px);
+  background-size: 20px 20px;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.cv-container {
+  position: relative;
+  width: 800px;
+  margin: 0 auto;
+  min-height: 100vh;
+}
+
+.window,
+.picture-window {
+  position: absolute;
+  width: 350px;
+  background: #c0c0c0;
+  border: 2px solid #000;
+  box-shadow: 2px 2px 0 #e0e0e0, 4px 4px 0 #000;
+  display: flex;
+  flex-direction: column;
+}
+
+.picture-window {
+  width: 200px;
+  height: 250px;
+}
+
+.window-header {
+  background: linear-gradient(90deg, #000080, #1084d0);
+  color: #fff;
+  padding: 4px;
+  font-size: 12px;
+  position: relative;
+}
+
+.window-header h1 {
+  margin: 0;
+  font-size: 18px;
+}
+
+.window-close {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  font-family: "Arial", sans-serif;
+  font-weight: bold;
+  font-size: 12px;
+  color: #fff;
+  background: #ff0000;
+  width: 14px;
+  height: 14px;
+  text-align: center;
+  line-height: 14px;
+  border: 1px solid #000;
+  box-shadow: 1px 1px 0 #e0e0e0, 2px 2px 0 #000;
+}
+
+.window-content {
+  padding: 10px;
+  font-size: 14px;
+  color: #000;
+  background: linear-gradient(135deg, #e0e0e0, #f0f0f0);
+  border-top: 1px solid #000;
+  flex-grow: 1;
+}
+
+.picture-window .window-content {
+  padding: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.profile-img {
+  max-width: 100%;
+  max-height: 180px;
+  border: 1px solid #000;
+  box-shadow: 1px 1px 0 #e0e0e0, 2px 2px 0 #000;
+}
+
+.btn {
+  display: inline-block;
+  font-family: Arial, sans-serif;
+  font-size: 12px;
+  color: #000;
+  background: linear-gradient(45deg, rgb(200, 255, 0), #00ffff);
+  padding: 5px 10px;
+  text-decoration: none;
+  border: 1px solid #000;
+  box-shadow: 1px 1px 0 #e0e0e0, 2px 2px 0 #000;
+}
+
+.btn:hover {
+  transform: scale(1.05);
+  filter: brightness(1.2);
+  animation: glitch 0.3s infinite;
+}
+
+@keyframes glitch {
+  0% {
+    transform: translate(0);
+  }
+  20% {
+    transform: translate(-0.75px, 0.75px);
+  }
+  40% {
+    transform: translate(-0.75px, -0.75px);
+  }
+  60% {
+    transform: translate(0.75px, 0.75px);
+  }
+  80% {
+    transform: translate(0.75px, -0.75px);
+  }
+  100% {
+    transform: translate(0);
+  }
+}
+
+.window-content p,
+.window-content ul {
+  margin: 0 0 10px 0;
+  line-height: 1.5;
+}
+
+.window-content ul {
+  padding-left: 20px;
+}
+
+.window[style*="width: 625px"] {
+  width: 625px !important;
+}
+.window[style*="width: 400px"] {
+  width: 400px !important;
+}
+.window[style*="width: 300px"] {
+  width: 300px !important;
+}
+
+.experience-window .window-content .job strong,
+.projects-window .window-content .project strong {
+  font-size: 16px;
+}
+
+.experience-window .role {
+  font-size: 16px;
+  font-weight: normal;
+  display: block;
+  margin-bottom: 2px;
+}
+
+.header-window {
+  position: absolute;
+  background: none;
+  border: none;
+  box-shadow: none;
+  z-index: 10;
+  width: 500px;
+}
+
+.name-header {
+  font-family: "toxigenesis", "Arial", sans-serif;
+  font-size: 3.3rem;
+  font-weight: bold;
+  letter-spacing: 2px;
+  color: #222;
+}
+
+.subheading {
+  font-family: "toxigenesis", "Arial", sans-serif;
+  font-size: 1.7rem;
+  font-weight: normal;
+  color: #444;
+  margin-top: 0.2em;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  display: block;
+}
+
+.window .window-content .job strong,
+.window .window-content .project strong {
+  font-size: 16px;
+  font-weight: bold;
+  display: block;
+  margin-bottom: 4px;
+  color: #222;
+}
+
+.skills-window .skills-content {
+  display: flex;
+  flex-direction: row;
+  gap: 24px;
+}
+.skills-window .skills-left,
+.skills-window .skills-right {
+  flex: 1 1 0;
+}
+.skills-window .skills-left {
+  padding-right: 12px;
+}
+.skills-window .skills-right {
+  padding-left: 12px;
+  border-left: 1px solid #bbb;
+}
+
+.references-window .window-content,
+.references-window .window-content p {
+  font-size: 14px;
+}
+.references-window .window-header,
+.references-window .window-header h1 {
+  font-size: 18px;
+}
+
+.skills-window .window-content strong {
+  font-size: 17px;
+}
+.window[style*="top: 1375px"][style*="left: 300px"] .window-content strong {
+  font-size: 17px;
+}
+
+.window-content .interest strong {
+  font-size: 16px;
+  font-weight: bold;
+  display: block;
+  margin-bottom: 4px;
+  color: #222;
+}
+
+.taskbar {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 28px;
+  background: linear-gradient(to bottom, #c0c0c0, #a0a0a0);
+  border-top: 2px solid #e0e0e0;
+  border-bottom: 2px solid #000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 4px;
+  font-family: "MS Sans Serif", "Microsoft Sans Serif", Arial, sans-serif;
+  font-size: 11px;
+  z-index: 1000;
+}
+
+.taskbar-left {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.taskbar-center {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(to bottom, #c0c0c0, #a0a0a0);
+  color: #000;
+  padding: 4px 8px;
+  border: 1px solid #000;
+  box-shadow: none;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.start-button {
+  background: linear-gradient(to bottom, #000080, #1084d0);
+  color: #fff;
+  padding: 4px 8px;
+  border: 1px solid #000;
+  border-right: 2px solid #000;
+  border-bottom: 2px solid #000;
+  box-shadow: 1px 1px 0 #e0e0e0, 2px 2px 0 #000;
+  font-weight: bold;
+  cursor: pointer;
+  width: 60px;
+  text-align: center;
+}
+
+.taskbar-item {
+  background: linear-gradient(to bottom, #c0c0c0, #a0a0a0);
+  color: #000;
+  padding: 4px 8px;
+  border: 1px solid #000;
+  box-shadow: none;
+  cursor: pointer;
+}
+
+.taskbar-right {
+  display: flex;
+  align-items: center;
+}
+
+.taskbar-time {
+  background: linear-gradient(to bottom, #c0c0c0, #a0a0a0);
+  color: #000;
+  padding: 4px 8px;
+  border: 1px solid #000;
+  border-right: 2px solid #000;
+  border-bottom: 2px solid #000;
+  box-shadow: 1px 1px 0 #e0e0e0, 2px 2px 0 #000;
+  font-weight: bold;
+  width: 60px;
+  text-align: center;
+}
+
+.start-menu {
+  position: absolute;
+  background: #e0e0e0;
+  border: 2px solid #000;
+  box-shadow: 2px -2px 0 #e0e0e0, 2px -2px 0 #e0e0e0, 4px -4px 0 #000,
+    4px -4px 0 #000;
+  z-index: 2000;
+}
+
+.start-menu-header {
+  background: linear-gradient(90deg, #000080, #1084d0);
+  color: #fff;
+  font-weight: bold;
+  padding: 10px 12px;
+  font-size: 18px;
+  border-bottom: 1.5px solid #000;
+}
+
+.start-menu-list {
+  list-style: none;
+  margin: 0;
+  padding: 6px 0 6px 0;
+}
+
+.start-menu-list li {
+  display: flex;
+  align-items: center;
+  padding: 7px 16px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.start-menu-icon {
+  width: 22px;
+  display: inline-block;
+  text-align: center;
+  margin-right: 22px;
+  font-size: 28px;
+}
+
+.start-menu-separator {
+  border-bottom: 1.5px solid #bbb;
+  margin: 6px 0;
+  height: 0;
+  padding: 0;
+}
+
+.cv-download-window {
+  position: fixed;
+  bottom: 125px;
+  right: 200px;
+  width: 200px;
+  height: auto;
+  background: #c0c0c0;
+  border: 2px solid #000;
+  box-shadow: 2px 2px 0 #fff, 4px 4px 0 #000;
+  font-family: "orbitron", "Arial", sans-serif;
+  animation: float 3s ease-in-out infinite;
+  opacity: 0;
+  transform: scale(0.8);
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+  z-index: 1000;
+}
+.cv-download-window.visible {
+  opacity: 1;
+  transform: scale(1);
+}
+@media print {
+  .cv-download-window {
+    display: none !important;
+  }
+}
+.cv-download-window .window-content {
+  height: auto;
+  min-height: unset;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-10px) scale(1);
+  }
+}
+
+@media (max-width: 1600px) {
+  .cv-download-window {
+    position: absolute !important;
+    top: 975px !important;
+    left: 25px !important;
+    right: auto !important;
+    bottom: auto !important;
+    animation: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+    z-index: auto !important;
+  }
+}
