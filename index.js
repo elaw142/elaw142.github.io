@@ -27,7 +27,7 @@ const axesHelper = new THREE.AxesHelper();
  * Textures
  */
 const textureLoader = new THREE.TextureLoader();
-const matcapTexture = textureLoader.load("./textures/matcaps/7.png");
+const matcapTexture = textureLoader.load("/static/textures/matcaps/7.png");
 matcapTexture.colorSpace = THREE.SRGBColorSpace;
 
 /**
@@ -40,7 +40,7 @@ const sceneContainer = new THREE.Group();
 scene.add(sceneContainer);
 
 // Font loading
-fontLoader.load("./fonts/excelorate_regular.json", (font) => {
+fontLoader.load("/static/fonts/excelorate_regular.json", (font) => {
   const textGeometry = new TextGeometry("Elliot Lawrence", {
     font,
     size: 0.5,
@@ -110,11 +110,11 @@ const mouse = {
   x: 0,
   y: 0,
   targetX: 0,
-  targetY: 0
+  targetY: 0,
 };
 
 // Track mouse movement
-window.addEventListener('mousemove', (event) => {
+window.addEventListener("mousemove", (event) => {
   // Convert mouse position to normalized device coordinates (-1 to +1)
   mouse.targetX = (event.clientX / sizes.width) * 2 - 1;
   mouse.targetY = -((event.clientY / sizes.height) * 2 - 1);
@@ -160,8 +160,8 @@ controls.enabled = false; // Disable controls initially
 
 // Toggle between mouse follow and orbit controls
 let mouseFollowEnabled = true;
-window.addEventListener('keydown', (event) => {
-  if (event.code === 'Space') {
+window.addEventListener("keydown", (event) => {
+  if (event.code === "Space") {
     mouseFollowEnabled = !mouseFollowEnabled;
     controls.enabled = !mouseFollowEnabled;
   }
@@ -180,11 +180,11 @@ const tick = () => {
     // Smooth interpolation for mouse movement
     mouse.x += (mouse.targetX - mouse.x) * 0.1;
     mouse.y += (mouse.targetY - mouse.y) * 0.1;
-    
+
     // Apply rotation to the scene container
-    sceneContainer.rotation.y = mouse.x * 0.5 / 5;
-    sceneContainer.rotation.x = -mouse.y * 0.3 / 5;
-    
+    sceneContainer.rotation.y = (mouse.x * 0.5) / 5;
+    sceneContainer.rotation.x = (-mouse.y * 0.3) / 5;
+
     // Optional: Add some gentle continuous rotation
     // sceneContainer.rotation.y += elapsedTime * 0.02;
   } else {
