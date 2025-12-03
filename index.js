@@ -209,6 +209,9 @@ document.addEventListener("DOMContentLoaded", () => {
     document.querySelector(".github-window").classList.add("visible");
     setTimeout(() => {
       document.querySelector(".cv-window").classList.add("visible");
+      setTimeout(() => {
+        document.querySelector(".playground-window").classList.add("visible");
+      }, 750);
     }, 750);
   }, 1000);
 });
