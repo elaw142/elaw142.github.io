@@ -177,11 +177,15 @@ body::before {
   font-size: 16px;
 }
 
+.experience-window .job {
+  margin-bottom: 8px;
+}
+
 .experience-window .role {
   font-size: 16px;
   font-weight: normal;
-  display: block;
-  margin-bottom: 2px;
+  display: inline;
+  margin-left: 4px;
 }
 
 .header-window {
@@ -212,12 +216,19 @@ body::before {
   display: block;
 }
 
-.window .window-content .job strong,
 .window .window-content .project strong {
   font-size: 16px;
   font-weight: bold;
   display: block;
   margin-bottom: 4px;
+  color: #222;
+}
+
+.window .window-content .job strong {
+  font-size: 16px;
+  font-weight: bold;
+  display: inline;
+  margin-bottom: 0;
   color: #222;
 }
 
