@@ -11,8 +11,57 @@
   <body>
     <div class="main-container">
       <div class="window-header">
-        Playground
+        <span class="window-title">Playground</span>
         <span class="window-close">X</span>
       </div>
+      <div class="desktop-content">
+        <div class="desktop-icons">
+          <div class="desktop-icon" onclick="openWindow('pathfinder')">
+            <div class="icon-image">🗺️</div>
+            <div class="icon-label">Pathfinder</div>
+          </div>
+        </div>
+      </div>
+      <div class="pathfinder-window">
+        <div class="window-header">
+          <span class="window-title">Pathfinding Visualizer</span>
+          <span class="window-close" onclick="closeWindow('pathfinder')">X</span>
+        </div>
+        <div class="pathfinder-content">
+          <div class="pathfinder-controls">
+            <div class="control-group">
+              <label>Mode:</label>
+              <div class="mode-buttons">
+                <button class="mode-btn active" onclick="setMode('draw-start')" title="Place start point (Green)">Start</button>
+                <button class="mode-btn" onclick="setMode('draw-end')" title="Place end point (Red)">End</button>
+                <button class="mode-btn" onclick="setMode('draw-wall')" title="Draw walls (Black)">Wall</button>
+                <button class="mode-btn" onclick="setMode('erase')" title="Erase cells">Erase</button>
+              </div>
+            </div>
+            
+            <div class="control-group">
+              <label>Algorithm:</label>
+              <select id="algorithm-select" class="algorithm-select">
+                <option value="bfs">Breadth-First Search (BFS)</option>
+                <option value="dfs">Depth-First Search (DFS)</option>
+                <option value="dijkstra">Dijkstra</option>
+              </select>
+            </div>
+            
+            <div class="control-group">
+              <button class="run-btn" onclick="runPathfinding()">Run Pathfinding</button>
+              <button class="clear-btn" onclick="clearGrid()">Clear Grid</button>
+            </div>
+          </div>
+          
+          <div class="pathfinder-grid" id="pathfinder-grid"></div>
+        </div>
+      </div>
+
+      <div class="taskbar">
+        <div class="start-button">elaw</div>
+      </div>
+
+    <script src="./pathfinder.js"></script>
   </body>
 </html>

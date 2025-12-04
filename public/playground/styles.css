@@ -54,8 +54,8 @@ body::before {
   top: 50px;
   left: 200px;
   right: 100px;
-  bottom: 100px;
-  background: #c0c0c0;
+  bottom: 30px;
+  background: #008080;
   border: 2px solid #000;
   box-shadow: 2px 2px 0 #fff, 4px 4px 0 #000;
   border-radius: 0;
@@ -64,9 +64,96 @@ body::before {
   flex-direction: column;
 }
 
-canvas.webgl {
-  width: 100%;
-  height: calc(100% - 20px);
+.window-title {
+  flex: 1;
+}
+
+.desktop-content {
+  flex: 1;
+  background: #008080;
+  padding: 20px;
+  overflow-y: auto;
+  position: relative;
+}
+
+.desktop-icons {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+  gap: 20px;
+  max-width: 300px;
+}
+
+.desktop-icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+  user-select: none;
+  padding: 5px;
+  transition: background 0.1s;
+}
+
+.desktop-icon:active {
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.icon-image {
+  font-size: 32px;
+  line-height: 1;
+}
+
+.icon-label {
+  font-size: 11px;
+  color: #fff;
+  text-align: center;
+  font-family: "MS Sans Serif", "Arial", sans-serif;
+  font-weight: bold;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  word-break: break-word;
+  width: 70px;
+}
+
+.taskbar {
+  height: 28px;
+  background: linear-gradient(180deg, #c0c0c0, #808080);
+  border-top: 2px solid #dfdfdf;
+  border-bottom: 2px solid #808080;
+  display: flex;
+  align-items: center;
+  padding: 2px;
+  gap: 4px;
+  box-shadow: inset 1px 1px 0 #fff, inset -1px -1px 0 #000;
+}
+
+.start-button {
+  background: linear-gradient(135deg, #c0c0c0, #808080);
+  border: 2px solid #000;
+  box-shadow: 1px 1px 0 #fff, 2px 2px 0 #000;
+  padding: 2px 6px;
+  font-size: 11px;
+  font-weight: bold;
+  font-family: "MS Sans Serif", "Arial", sans-serif;
+  cursor: default;
+  user-select: none;
+}
+
+.start-button:active {
+  box-shadow: inset 1px 1px 0 #000, inset -1px -1px 0 #fff;
+}
+
+.taskbar-spacer {
+  flex: 1;
+  border-left: 2px solid #fff;
+  border-right: 2px solid #808080;
+}
+
+.system-tray {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  font-size: 12px;
+  padding-right: 4px;
 }
 
 .github-window,
@@ -196,4 +283,172 @@ canvas.webgl {
   50% {
     transform: translateY(-10px) scale(1);
   }
+}
+
+/* Pathfinder Window Styles */
+.pathfinder-window {
+  position: fixed;
+  width: 650px;
+  height: 750px;
+  background: #c0c0c0;
+  border: 2px solid #000;
+  box-shadow: 2px 2px 0 #fff, 4px 4px 0 #000;
+  top: 80px;
+  left: 250px;
+  opacity: 0;
+  transform: scale(0.8);
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+  pointer-events: none;
+  display: flex;
+  flex-direction: column;
+}
+
+.pathfinder-window.visible {
+  opacity: 1;
+  transform: scale(1);
+  pointer-events: auto;
+}
+
+.pathfinder-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(135deg, #e0e0e0, #f0f0f0);
+  border-top: 1px solid #000;
+  padding: 10px;
+  overflow: auto;
+}
+
+.pathfinder-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 10px;
+  padding: 8px;
+  background: #c0c0c0;
+  border: 1px solid #000;
+  box-shadow: inset 1px 1px 0 #fff, inset -1px -1px 0 #808080;
+}
+
+.control-group {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.control-group label {
+  font-size: 11px;
+  font-weight: bold;
+  font-family: "MS Sans Serif", "Arial", sans-serif;
+  color: #000;
+}
+
+.mode-buttons {
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
+}
+
+.mode-btn {
+  padding: 4px 8px;
+  font-size: 11px;
+  font-family: "MS Sans Serif", "Arial", sans-serif;
+  background: linear-gradient(135deg, #c0c0c0, #808080);
+  border: 2px solid #000;
+  box-shadow: 1px 1px 0 #fff, 2px 2px 0 #000;
+  cursor: pointer;
+  user-select: none;
+  transition: all 0.1s;
+}
+
+.mode-btn:active {
+  box-shadow: inset 1px 1px 0 #000, inset -1px -1px 0 #fff;
+}
+
+.mode-btn.active {
+  background: linear-gradient(135deg, #00ff00, #00cc00);
+  box-shadow: inset 1px 1px 0 #000, inset -1px -1px 0 #fff;
+}
+
+.algorithm-select {
+  padding: 4px;
+  font-size: 11px;
+  font-family: "MS Sans Serif", "Arial", sans-serif;
+  background: #fff;
+  border: 2px solid #000;
+  box-shadow: inset 1px 1px 0 #808080;
+}
+
+.run-btn,
+.clear-btn {
+  padding: 6px 12px;
+  font-size: 11px;
+  font-family: "MS Sans Serif", "Arial", sans-serif;
+  background: linear-gradient(135deg, #00ffff, #00cccc);
+  border: 2px solid #000;
+  box-shadow: 1px 1px 0 #fff, 2px 2px 0 #000;
+  cursor: pointer;
+  user-select: none;
+  transition: all 0.1s;
+  font-weight: bold;
+}
+
+.run-btn:active,
+.clear-btn:active {
+  box-shadow: inset 1px 1px 0 #000, inset -1px -1px 0 #fff;
+}
+
+.clear-btn {
+  background: linear-gradient(135deg, #ff6b6b, #cc5555);
+  color: #fff;
+}
+
+.pathfinder-grid {
+  flex: 1;
+  display: grid;
+  gap: 2px;
+  background: #fff;
+  border: 2px solid #000;
+  padding: 8px;
+  overflow: auto;
+}
+
+.grid-cell {
+  background: #fff;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  transition: background 0.1s;
+  aspect-ratio: 1;
+  box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.1);
+}
+
+.grid-cell:hover {
+  background: #f0f0f0;
+}
+
+.grid-cell.start {
+  background: #00ff00;
+  border-color: #00cc00;
+  box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.2);
+}
+
+.grid-cell.end {
+  background: #ff0000;
+  border-color: #cc0000;
+  box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.2);
+}
+
+.grid-cell.wall {
+  background: #000;
+  border-color: #000;
+}
+
+.grid-cell.path {
+  background: #ffff00;
+  border-color: #cccc00;
+}
+
+.grid-cell.visited {
+  background: #87ceeb;
+  border-color: #6fb3d9;
 }
