@@ -156,44 +156,6 @@ body::before {
   padding-right: 4px;
 }
 
-.github-window,
-.cv-window,
-.playground-window {
-  position: fixed;
-  width: 200px;
-  height: 125px;
-  background: #c0c0c0;
-  border: 2px solid #000;
-  box-shadow: 2px 2px 0 #fff, 4px 4px 0 #000;
-  font-family: "orbitron", "Arial", sans-serif;
-  animation: float 3s ease-in-out infinite;
-  opacity: 0;
-  transform: scale(0.8);
-  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
-}
-
-.github-window {
-  top: 200px;
-  left: 75px;
-}
-
-.cv-window {
-  bottom: 125px;
-  right: 200px;
-}
-
-.playground-window {
-  top: 25px;
-  right: 350px;
-}
-
-.github-window.visible,
-.cv-window.visible,
-.playground-window.visible {
-  opacity: 1;
-  transform: scale(1);
-}
-
 .window-header {
   background: linear-gradient(90deg, #000080, #1084d0);
   color: #fff;
@@ -451,4 +413,102 @@ body::before {
 .grid-cell.visited {
   background: #87ceeb;
   border-color: #6fb3d9;
+}
+
+/* Under Construction Window Styles */
+.construction-window {
+  position: fixed;
+  width: 400px;
+  height: 300px;
+  background: #c0c0c0;
+  border: 2px solid #000;
+  box-shadow: 2px 2px 0 #fff, 4px 4px 0 #000;
+  top: 150px;
+  right: 150px;
+  opacity: 1;
+  transform: scale(1);
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+  pointer-events: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.construction-window.visible {
+  opacity: 1;
+  transform: scale(1);
+  pointer-events: auto;
+}
+
+.construction-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(135deg, #e0e0e0, #f0f0f0);
+  border-top: 1px solid #000;
+  padding: 20px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.construction-content h2 {
+  font-family: "MS Sans Serif", "Arial", sans-serif;
+  font-size: 16px;
+  color: #000;
+  margin-bottom: 10px;
+}
+
+.construction-content p {
+  font-family: "MS Sans Serif", "Arial", sans-serif;
+  font-size: 12px;
+  color: #000;
+  margin-bottom: 20px;
+}
+
+.construction-icon {
+  font-size: 48px;
+  margin-bottom: 10px;
+}
+
+/* Easter Egg Window Styles */
+.easter-egg-window {
+  position: fixed;
+  width: 500px;
+  height: 400px;
+  background: #c0c0c0;
+  border: 2px solid #000;
+  box-shadow: 2px 2px 0 #fff, 4px 4px 0 #000;
+  top: 200px;
+  left: 400px;
+  opacity: 0;
+  transform: scale(0.8);
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+  pointer-events: none;
+  display: flex;
+  flex-direction: column;
+  z-index: 1000;
+}
+
+.easter-egg-window.visible {
+  opacity: 1;
+  transform: scale(1);
+  pointer-events: auto;
+}
+
+.easter-egg-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(135deg, #e0e0e0, #f0f0f0);
+  border-top: 1px solid #000;
+  padding: 20px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  overflow: auto;
+}
+
+.easter-egg-image {
+  max-width: 100%;
+  max-height: 100%;
 }

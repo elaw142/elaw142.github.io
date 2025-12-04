@@ -108,6 +108,9 @@ function openWindow(type) {
     if (gridCells.length === 0) {
       initializeGrid();
     }
+  } else if (type === "easter-egg") {
+    const easterEggWindow = document.querySelector(".easter-egg-window");
+    easterEggWindow.classList.add("visible");
   }
 }
 
@@ -116,5 +119,11 @@ function closeWindow(type) {
     const pathfinderWindow = document.querySelector(".pathfinder-window");
     pathfinderWindow.classList.remove("visible");
     isMouseDown = false;
+  } else if (type === "construction") {
+    const constructionWindow = document.querySelector(".construction-window");
+    constructionWindow.classList.remove("visible");
+  } else if (type === "easter-egg") {
+    const easterEggWindow = document.querySelector(".easter-egg-window");
+    easterEggWindow.classList.remove("visible");
   }
 }

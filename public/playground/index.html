@@ -22,6 +22,29 @@
           </div>
         </div>
       </div>
+
+      <div class="construction-window">
+        <div class="window-header">
+          <span class="window-title">Under Construction</span>
+          <span class="window-close" onclick="closeWindow('construction')">X</span>
+        </div>
+        <div class="construction-content">
+          <div class="construction-icon" onclick="openWindow('easter-egg')" style="cursor: pointer;">🚧</div>
+          <h2>Work in Progress!</h2>
+          <p>This page is still being built. Check back later!</p>
+        </div>
+      </div>
+
+      <div class="easter-egg-window">
+        <div class="window-header">
+          <span class="window-title">Secret Message 🤨</span>
+          <span class="window-close" onclick="closeWindow('easter-egg')">X</span>
+        </div>
+        <div class="easter-egg-content">
+          <img src="../static/under_construction.jpg" alt="Easter Egg" class="easter-egg-image" />
+        </div>
+      </div>
+
       <div class="pathfinder-window">
         <div class="window-header">
           <span class="window-title">Pathfinding Visualizer</span>
