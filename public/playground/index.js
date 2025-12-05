@@ -3,28 +3,38 @@ const gridSize = 25;
 let gridCells = [];
 let isMouseDown = false;
 
+// Navigation
+function goHome() {
+  window.location.href = "/";
+}
+
 // Recipes data
 const recipes = [
-  // Example format: { name: "Recipe Name", url: "https://example.com" }
+  // Example format: { name: "Recipe Name", url: "https://example.com", rating: 4.5 }
   {
     name: "One Pot Beef Stew",
     url: "https://www.taste.com.au/recipes/classic-one-pot-beef-stew/21b92285-3e73-43e6-938f-73a37c476de8?r=quickeasy/biccuul7",
+    rating: 4.5,
   },
   {
     name: "Air Fryer Roast Pork",
     url: "https://www.taste.com.au/recipes/air-fryer-roast-pork-belly-recipe/s2bj5tyh?r=quickeasy/biccuul7",
+    rating: 2.5,
   },
   {
     name: "Apple Fennel Cabbage Slaw",
     url: "https://www.recipetineats.com/best-no-mayo-coleslaw/",
+    rating: 4,
   },
   {
     name: "Dumpling Laksa",
     url: "https://simplehomeedit.com/recipe/quick-dumpling-laksa/",
+    rating: 5,
   },
 ];
 
 let filteredRecipes = [...recipes];
+let currentSort = "default";
 
 function initializeGrid() {
   const gridContainer = document.getElementById("pathfinder-grid");
@@ -160,23 +170,69 @@ function closeWindow(type) {
 }
 
 // Recipes functionality
+function generateStarRating(rating) {
+  const fullStars = Math.floor(rating);
+  const hasHalfStar = rating % 1 !== 0;
+  let stars = "★".repeat(fullStars);
+  if (hasHalfStar) {
+    stars += "⯪";
+  }
+  stars += "☆".repeat(5 - Math.ceil(rating));
+  return stars;
+}
+
+function sortRecipes(recipesToSort) {
+  const recipes = [...recipesToSort];
+  if (currentSort === "alphabetical") {
+    recipes.sort((a, b) => a.name.localeCompare(b.name));
+  } else if (currentSort === "rating") {
+    recipes.sort((a, b) => (b.rating || 0) - (a.rating || 0));
+  }
+  return recipes;
+}
+
 function renderRecipes(recipesToRender) {
   const recipesList = document.getElementById("recipes-list");
   recipesList.innerHTML = "";
 
-  if (recipesToRender.length === 0) {
+  const sortedRecipes = sortRecipes(recipesToRender);
+
+  if (sortedRecipes.length === 0) {
     recipesList.innerHTML =
       '<div class="recipe-item" style="color: #808080;">No recipes found</div>';
     return;
   }
 
-  recipesToRender.forEach((recipe) => {
+  sortedRecipes.forEach((recipe) => {
     const recipeItem = document.createElement("div");
     recipeItem.className = "recipe-item";
-    recipeItem.textContent = recipe.name;
+
+    const nameSpan = document.createElement("span");
+    nameSpan.className = "recipe-name";
+    nameSpan.textContent = recipe.name;
+
+    const ratingSpan = document.createElement("span");
+    ratingSpan.className = "recipe-rating";
+    ratingSpan.textContent = generateStarRating(recipe.rating || 0);
+
+    recipeItem.appendChild(nameSpan);
+    recipeItem.appendChild(ratingSpan);
     recipeItem.onclick = () => window.open(recipe.url, "_blank");
     recipesList.appendChild(recipeItem);
   });
+}
+
+function setSortMode(mode) {
+  currentSort = mode;
+
+  // Update button states
+  document.querySelectorAll(".sort-btn").forEach((btn) => {
+    btn.classList.remove("active");
+  });
+  document.querySelector(`[data-sort="${mode}"]`).classList.add("active");
+
+  // Re-render with new sort
+  renderRecipes(filteredRecipes);
 }
 
 function setupRecipeSearch() {

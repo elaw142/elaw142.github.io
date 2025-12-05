@@ -9,6 +9,7 @@
     <link rel="icon" href="../favicon.ico" type="image/x-icon" />
   </head>
   <body>
+    <div class="floating-back-button" onclick="goHome()" title="Go back to main page">←</div>
     <div class="main-container">
       <div class="window-header">
         <span class="window-title">Playground</span>
@@ -93,6 +94,11 @@
         <div class="recipes-content">
           <div class="recipes-search">
             <input type="text" id="recipe-search" class="recipe-search-input" placeholder="Search recipes..." />
+          </div>
+          <div class="recipes-sort">
+            <button class="sort-btn active" data-sort="default" onclick="setSortMode('default')">Default</button>
+            <button class="sort-btn" data-sort="alphabetical" onclick="setSortMode('alphabetical')">A-Z</button>
+            <button class="sort-btn" data-sort="rating" onclick="setSortMode('rating')">Rating</button>
           </div>
           <div class="recipes-list" id="recipes-list"></div>
         </div>

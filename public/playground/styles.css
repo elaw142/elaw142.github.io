@@ -165,6 +165,32 @@ body::before {
   position: relative;
 }
 
+.floating-back-button {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  font-size: 20px;
+  cursor: pointer;
+  padding: 0px 12px 3px 12px;
+  transition: all 0.1s;
+  user-select: none;
+  background: linear-gradient(135deg, #c0c0c0, #808080);
+  border: 2px solid #000;
+  box-shadow: 1px 1px 0 #fff, 2px 2px 0 #000;
+  color: #000;
+  z-index: 2000;
+  font-weight: bold;
+  font-family: "MS Sans Serif", "Arial", sans-serif;
+}
+
+.floating-back-button:hover {
+  filter: brightness(1.2);
+}
+
+.floating-back-button:active {
+  box-shadow: inset 1px 1px 0 #000, inset -1px -1px 0 #fff;
+}
+
 .window-content {
   height: 80%;
   padding: 10px;
@@ -592,19 +618,76 @@ body::before {
   background: #fff;
 }
 
+.recipes-sort {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.sort-btn {
+  flex: 1;
+  padding: 6px 8px;
+  border: 2px solid #000;
+  box-shadow: 1px 1px 0 #fff, 2px 2px 0 #000;
+  background: linear-gradient(135deg, #c0c0c0, #808080);
+  font-family: "MS Sans Serif", "Arial", sans-serif;
+  font-size: 11px;
+  cursor: pointer;
+  transition: all 0.1s;
+  color: #000;
+  font-weight: bold;
+}
+
+.sort-btn:hover {
+  filter: brightness(1.15);
+}
+
+.sort-btn.active {
+  background: linear-gradient(135deg, #ffffff, #b0b0b0);
+  box-shadow: inset 1px 1px 0 #fff, inset -1px -1px 0 #000;
+  filter: brightness(1.3);
+  text-decoration: underline;
+}
+
+.sort-btn:active:not(.active) {
+  box-shadow: inset 1px 1px 0 #000, inset -1px -1px 0 #fff;
+}
+
 .recipe-item {
   padding: 10px 12px;
   border-bottom: 1px solid #c0c0c0;
   cursor: pointer;
   transition: background 0.1s;
   font-family: "MS Sans Serif", "Arial", sans-serif;
-  font-size: 12px;
+  font-size: 14px;
   color: #000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.recipe-name {
+  flex: 1;
+}
+
+.recipe-rating {
+  margin-left: 12px;
+  white-space: nowrap;
+  color: #ff6b00;
+  font-weight: bold;
+  font-size: 20px;
+  width: 80px;
+  text-align: center;
+  flex-shrink: 0;
 }
 
 .recipe-item:hover {
   background: #000080;
   color: #fff;
+}
+
+.recipe-item:hover .recipe-rating {
+  color: #ffd700;
 }
 
 .recipe-item:active {
