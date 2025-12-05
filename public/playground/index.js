@@ -3,6 +3,29 @@ const gridSize = 25;
 let gridCells = [];
 let isMouseDown = false;
 
+// Recipes data
+const recipes = [
+  // Example format: { name: "Recipe Name", url: "https://example.com" }
+  {
+    name: "One Pot Beef Stew",
+    url: "https://www.taste.com.au/recipes/classic-one-pot-beef-stew/21b92285-3e73-43e6-938f-73a37c476de8?r=quickeasy/biccuul7",
+  },
+  {
+    name: "Air Fryer Roast Pork",
+    url: "https://www.taste.com.au/recipes/air-fryer-roast-pork-belly-recipe/s2bj5tyh?r=quickeasy/biccuul7",
+  },
+  {
+    name: "Apple Fennel Cabbage Slaw",
+    url: "https://www.recipetineats.com/best-no-mayo-coleslaw/",
+  },
+  {
+    name: "Dumpling Laksa",
+    url: "https://simplehomeedit.com/recipe/quick-dumpling-laksa/",
+  },
+];
+
+let filteredRecipes = [...recipes];
+
 function initializeGrid() {
   const gridContainer = document.getElementById("pathfinder-grid");
   gridContainer.innerHTML = "";
@@ -111,6 +134,11 @@ function openWindow(type) {
   } else if (type === "easter-egg") {
     const easterEggWindow = document.querySelector(".easter-egg-window");
     easterEggWindow.classList.add("visible");
+  } else if (type === "recipes") {
+    const recipesWindow = document.querySelector(".recipes-window");
+    recipesWindow.classList.add("visible");
+    renderRecipes(recipes);
+    setupRecipeSearch();
   }
 }
 
@@ -125,5 +153,40 @@ function closeWindow(type) {
   } else if (type === "easter-egg") {
     const easterEggWindow = document.querySelector(".easter-egg-window");
     easterEggWindow.classList.remove("visible");
+  } else if (type === "recipes") {
+    const recipesWindow = document.querySelector(".recipes-window");
+    recipesWindow.classList.remove("visible");
   }
+}
+
+// Recipes functionality
+function renderRecipes(recipesToRender) {
+  const recipesList = document.getElementById("recipes-list");
+  recipesList.innerHTML = "";
+
+  if (recipesToRender.length === 0) {
+    recipesList.innerHTML =
+      '<div class="recipe-item" style="color: #808080;">No recipes found</div>';
+    return;
+  }
+
+  recipesToRender.forEach((recipe) => {
+    const recipeItem = document.createElement("div");
+    recipeItem.className = "recipe-item";
+    recipeItem.textContent = recipe.name;
+    recipeItem.onclick = () => window.open(recipe.url, "_blank");
+    recipesList.appendChild(recipeItem);
+  });
+}
+
+function setupRecipeSearch() {
+  const searchInput = document.getElementById("recipe-search");
+  searchInput.value = "";
+  searchInput.onkeyup = () => {
+    const query = searchInput.value.toLowerCase();
+    filteredRecipes = recipes.filter((recipe) =>
+      recipe.name.toLowerCase().includes(query)
+    );
+    renderRecipes(filteredRecipes);
+  };
 }

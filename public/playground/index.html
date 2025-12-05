@@ -20,6 +20,10 @@
             <div class="icon-image">🗺️</div>
             <div class="icon-label">Pathfinder</div>
           </div>
+          <div class="desktop-icon" onclick="openWindow('recipes')">
+            <div class="icon-image">🍳</div>
+            <div class="icon-label">Recipes</div>
+          </div>
         </div>
       </div>
 
@@ -81,10 +85,23 @@
         </div>
       </div>
 
+      <div class="recipes-window">
+        <div class="window-header">
+          <span class="window-title">Recipes</span>
+          <span class="window-close" onclick="closeWindow('recipes')">X</span>
+        </div>
+        <div class="recipes-content">
+          <div class="recipes-search">
+            <input type="text" id="recipe-search" class="recipe-search-input" placeholder="Search recipes..." />
+          </div>
+          <div class="recipes-list" id="recipes-list"></div>
+        </div>
+      </div>
+
       <div class="taskbar">
         <div class="start-button">elaw</div>
       </div>
 
-    <script src="./pathfinder.js"></script>
+    <script src="./index.js"></script>
   </body>
 </html>
