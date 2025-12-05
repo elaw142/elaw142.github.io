@@ -237,6 +237,25 @@ body::before {
   cursor: default;
 }
 
+.pathfinder-window .window-close,
+.recipes-window .window-close,
+.easter-egg-window .window-close {
+  cursor: pointer;
+  transition: background 0.1s;
+}
+
+.pathfinder-window .window-close:hover,
+.recipes-window .window-close:hover,
+.easter-egg-window .window-close:hover {
+  background: #ff6666;
+}
+
+.pathfinder-window .window-close:active,
+.recipes-window .window-close:active,
+.easter-egg-window .window-close:active {
+  box-shadow: inset 1px 1px 0 #000, inset -1px -1px 0 #fff;
+}
+
 @keyframes float {
   0%,
   100% {
