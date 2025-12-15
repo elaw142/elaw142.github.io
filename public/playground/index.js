@@ -19,17 +19,27 @@ const recipes = [
   {
     name: "Air Fryer Roast Pork",
     url: "https://www.taste.com.au/recipes/air-fryer-roast-pork-belly-recipe/s2bj5tyh?r=quickeasy/biccuul7",
-    rating: 2.5,
+    rating: 5,
   },
   {
     name: "Apple Fennel Cabbage Slaw",
     url: "https://www.recipetineats.com/best-no-mayo-coleslaw/",
-    rating: 4,
+    rating: 4.5,
   },
   {
     name: "Dumpling Laksa",
     url: "https://simplehomeedit.com/recipe/quick-dumpling-laksa/",
     rating: 5,
+  },
+  {
+    name: "French Union Chicken",
+    url: "https://www.dessertfortwo.com/french-onion-chicken-recipe/",
+    rating: 4.5,
+  },
+  {
+    name: "Garlic & Parmesan Roasted Broccoli",
+    url: "https://downshiftology.com/recipes/roasted-broccoli/",
+    rating: 3,
   },
 ];
 
