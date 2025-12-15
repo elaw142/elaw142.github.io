@@ -279,8 +279,16 @@ function setupRecipeSearch() {
     const clientY = e.clientY;
     const dx = clientX - dragState.startX;
     const dy = clientY - dragState.startY;
-    const newLeft = clamp(dragState.startLeft + dx, 0, window.innerWidth - dragState.el.offsetWidth);
-    const newTop = clamp(dragState.startTop + dy, 0, window.innerHeight - dragState.el.offsetHeight);
+    const newLeft = clamp(
+      dragState.startLeft + dx,
+      0,
+      window.innerWidth - dragState.el.offsetWidth
+    );
+    const newTop = clamp(
+      dragState.startTop + dy,
+      0,
+      window.innerHeight - dragState.el.offsetHeight
+    );
     dragState.el.style.left = newLeft + "px";
     dragState.el.style.top = newTop + "px";
   }
@@ -352,13 +360,17 @@ function setupRecipeSearch() {
   document.addEventListener("mouseup", onMouseUp);
 
   // Touch move / end handlers
-  document.addEventListener("touchmove", (ev) => {
-    if (!dragState.isDragging || !dragState.el) return;
-    const t = ev.touches[0];
-    const fauxEvent = { clientX: t.clientX, clientY: t.clientY };
-    onMouseMove(fauxEvent);
-    ev.preventDefault();
-  }, { passive: false });
+  document.addEventListener(
+    "touchmove",
+    (ev) => {
+      if (!dragState.isDragging || !dragState.el) return;
+      const t = ev.touches[0];
+      const fauxEvent = { clientX: t.clientX, clientY: t.clientY };
+      onMouseMove(fauxEvent);
+      ev.preventDefault();
+    },
+    { passive: false }
+  );
 
   document.addEventListener("touchend", () => {
     onMouseUp();
