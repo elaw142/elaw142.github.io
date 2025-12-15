@@ -8,6 +8,7 @@
     <link rel="icon" href="/favicon.ico" type="image/x-icon" />
   </head>
   <body>
+    <div class="floating-back-button" onclick="goHome()" title="Go back to main page">←</div>
     <div class="cv-container">
       <div class="Page 1">
         <!-- Name header -->
@@ -419,6 +420,9 @@
       </div>
     </div>
     <script>
+      function goHome() {
+        window.location.href = "/";
+      }
       window.addEventListener("DOMContentLoaded", () => {
         setTimeout(() => {
           document.getElementById("cvDownloadWindow").classList.add("visible");

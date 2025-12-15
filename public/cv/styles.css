@@ -452,3 +452,30 @@ body::before {
     z-index: auto !important;
   }
 }
+
+/* Floating back button (same style as playground) */
+.floating-back-button {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  font-size: 20px;
+  cursor: pointer;
+  padding: 0px 12px 3px 12px;
+  transition: all 0.1s;
+  user-select: none;
+  background: linear-gradient(135deg, #c0c0c0, #808080);
+  border: 2px solid #000;
+  box-shadow: 1px 1px 0 #e0e0e0, 2px 2px 0 #000;
+  color: #000;
+  z-index: 2000;
+  font-weight: bold;
+  font-family: "MS Sans Serif", "Arial", sans-serif;
+}
+
+.floating-back-button:hover {
+  filter: brightness(1.2);
+}
+
+.floating-back-button:active {
+  box-shadow: inset 1px 1px 0 #000, inset -1px -1px 0 #fff;
+}
