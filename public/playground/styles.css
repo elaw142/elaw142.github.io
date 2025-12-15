@@ -165,6 +165,26 @@ body::before {
   position: relative;
 }
 
+/* Make window header show grab cursor and disable native touch scrolling while dragging */
+.window-header {
+  cursor: grab;
+  touch-action: none;
+}
+
+.window-header:active {
+  cursor: grabbing;
+}
+
+/* The playground's outer window header is not draggable; don't show grab cursor */
+.main-container > .window-header {
+  cursor: default;
+  touch-action: auto;
+}
+
+.main-container > .window-header:active {
+  cursor: default;
+}
+
 .floating-back-button {
   position: fixed;
   top: 10px;

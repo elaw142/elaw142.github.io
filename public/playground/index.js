@@ -256,3 +256,111 @@ function setupRecipeSearch() {
     renderRecipes(filteredRecipes);
   };
 }
+
+// Make window elements draggable by their header and bring clicked window to front
+(function enableWindowDragging() {
+  let dragState = {
+    isDragging: false,
+    el: null,
+    startX: 0,
+    startY: 0,
+    startLeft: 0,
+    startTop: 0,
+  };
+  let zCounter = 1000;
+
+  function clamp(v, a, b) {
+    return Math.max(a, Math.min(v, b));
+  }
+
+  function onMouseMove(e) {
+    if (!dragState.isDragging || !dragState.el) return;
+    const clientX = e.clientX;
+    const clientY = e.clientY;
+    const dx = clientX - dragState.startX;
+    const dy = clientY - dragState.startY;
+    const newLeft = clamp(dragState.startLeft + dx, 0, window.innerWidth - dragState.el.offsetWidth);
+    const newTop = clamp(dragState.startTop + dy, 0, window.innerHeight - dragState.el.offsetHeight);
+    dragState.el.style.left = newLeft + "px";
+    dragState.el.style.top = newTop + "px";
+  }
+
+  function onMouseUp() {
+    if (!dragState.isDragging) return;
+    dragState.isDragging = false;
+    // restore transition if we modified it
+    if (dragState.el) {
+      dragState.el.style.transition = "";
+    }
+    dragState.el = null;
+    document.body.style.userSelect = "";
+  }
+
+  function attach(winEl) {
+    const header = winEl.querySelector(".window-header");
+    if (!header) return;
+
+    // pointer cursors handled in CSS, but ensure header is focusable for accessibility
+    header.style.userSelect = "none";
+
+    header.addEventListener("mousedown", (e) => {
+      // Ignore clicks on the close button inside header
+      if (e.target.closest(".window-close")) return;
+      dragState.isDragging = true;
+      dragState.el = winEl;
+      dragState.startX = e.clientX;
+      dragState.startY = e.clientY;
+      const rect = winEl.getBoundingClientRect();
+      dragState.startLeft = rect.left;
+      dragState.startTop = rect.top;
+      // Temporarily disable CSS transitions while dragging
+      winEl.style.transition = "none";
+      winEl.style.zIndex = ++zCounter;
+      document.body.style.userSelect = "none";
+      e.preventDefault();
+    });
+
+    // Touch support
+    header.addEventListener("touchstart", (ev) => {
+      const t = ev.touches[0];
+      dragState.isDragging = true;
+      dragState.el = winEl;
+      dragState.startX = t.clientX;
+      dragState.startY = t.clientY;
+      const rect = winEl.getBoundingClientRect();
+      dragState.startLeft = rect.left;
+      dragState.startTop = rect.top;
+      winEl.style.transition = "none";
+      winEl.style.zIndex = ++zCounter;
+      document.body.style.userSelect = "none";
+      ev.preventDefault();
+    });
+
+    // Bring to front when clicking any part of the window
+    winEl.addEventListener("mousedown", () => {
+      winEl.style.zIndex = ++zCounter;
+    });
+  }
+
+  // Attach to all playground windows
+  const windows = document.querySelectorAll(
+    ".pathfinder-window, .recipes-window, .easter-egg-window, .construction-window"
+  );
+  windows.forEach(attach);
+
+  document.addEventListener("mousemove", onMouseMove);
+  document.addEventListener("mouseup", onMouseUp);
+
+  // Touch move / end handlers
+  document.addEventListener("touchmove", (ev) => {
+    if (!dragState.isDragging || !dragState.el) return;
+    const t = ev.touches[0];
+    const fauxEvent = { clientX: t.clientX, clientY: t.clientY };
+    onMouseMove(fauxEvent);
+    ev.preventDefault();
+  }, { passive: false });
+
+  document.addEventListener("touchend", () => {
+    onMouseUp();
+  });
+})();
