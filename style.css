@@ -197,3 +197,160 @@ canvas.webgl {
     transform: translateY(-10px) scale(1);
   }
 }
+
+/* Mobile Responsive Styles */
+@media screen and (max-width: 768px) {
+  body {
+    overflow-x: hidden;
+  }
+
+  .main-container {
+    position: fixed;
+    top: 20px;
+    left: 10px;
+    right: 10px;
+    bottom: 20px;
+    box-shadow: 1px 1px 0 #fff, 2px 2px 0 #000;
+  }
+
+  .github-window,
+  .cv-window,
+  .playground-window {
+    width: 150px;
+    height: 110px;
+    box-shadow: 1px 1px 0 #fff, 2px 2px 0 #000;
+  }
+
+  .github-window {
+    top: 100px;
+    left: 15px;
+  }
+
+  .cv-window {
+    bottom: 80px;
+    right: 15px;
+  }
+
+  .playground-window {
+    top: 15px;
+    right: 15px;
+  }
+
+  .window-header {
+    font-size: 10px;
+    padding: 3px;
+  }
+
+  .window-content {
+    padding: 8px;
+    font-size: 9px;
+  }
+
+  .btn {
+    font-size: 12px;
+    padding: 4px 8px;
+  }
+
+  .window-close {
+    font-size: 10px;
+    width: 12px;
+    height: 12px;
+    line-height: 12px;
+    top: 3px;
+    right: 3px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .main-container {
+    top: 10px;
+    left: 5px;
+    right: 5px;
+    bottom: 10px;
+  }
+
+  .github-window,
+  .cv-window,
+  .playground-window {
+    width: 120px;
+    height: 100px;
+  }
+
+  .github-window {
+    top: 80px;
+    left: 10px;
+  }
+
+  .cv-window {
+    bottom: 60px;
+    right: 10px;
+  }
+
+  .playground-window {
+    top: 10px;
+    right: 10px;
+  }
+
+  .window-header {
+    font-size: 9px;
+    padding: 2px;
+  }
+
+  .window-content {
+    padding: 6px;
+    font-size: 8px;
+  }
+
+  .btn {
+    font-size: 10px;
+    padding: 3px 6px;
+  }
+}
+
+/* Landscape mobile adjustments */
+@media screen and (max-width: 768px) and (orientation: landscape) {
+  .main-container {
+    top: 10px;
+    bottom: 10px;
+  }
+
+  .github-window {
+    top: 50px;
+    left: 10px;
+  }
+
+  .cv-window {
+    bottom: 50px;
+    right: 10px;
+  }
+
+  .playground-window {
+    top: 10px;
+    right: calc(50% - 60px);
+  }
+}
+
+/* Tablet adjustments */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  .main-container {
+    top: 30px;
+    left: 50px;
+    right: 50px;
+    bottom: 50px;
+  }
+
+  .github-window {
+    top: 120px;
+    left: 40px;
+  }
+
+  .cv-window {
+    bottom: 100px;
+    right: 100px;
+  }
+
+  .playground-window {
+    top: 20px;
+    right: 150px;
+  }
+}

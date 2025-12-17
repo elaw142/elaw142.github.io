@@ -479,3 +479,271 @@ body::before {
 .floating-back-button:active {
   box-shadow: inset 1px 1px 0 #000, inset -1px -1px 0 #fff;
 }
+
+/* Mobile Responsive Styles */
+@media screen and (max-width: 768px) {
+  body {
+    padding: 10px 0;
+  }
+
+  .cv-container {
+    width: 100%;
+    padding: 0 10px;
+  }
+
+  /* Reset all absolute positioning for mobile */
+  .window,
+  .picture-window,
+  .header-window {
+    position: relative !important;
+    width: 100% !important;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    margin-bottom: 20px;
+    max-width: 100%;
+  }
+
+  .picture-window {
+    height: auto;
+    max-width: 250px;
+    margin: 0 auto 20px;
+  }
+
+  .profile-img {
+    max-height: 200px;
+  }
+
+  /* Header adjustments */
+  .header-window {
+    width: 100% !important;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .name-header {
+    font-size: 2rem;
+  }
+
+  .subheading {
+    font-size: 1.2rem;
+  }
+
+  /* Window content adjustments */
+  .window-header h1 {
+    font-size: 16px;
+  }
+
+  .window-content {
+    font-size: 13px;
+    padding: 8px;
+  }
+
+  /* Taskbar mobile adjustments */
+  .taskbar {
+    position: relative !important;
+    width: 100% !important;
+    top: auto !important;
+    left: auto !important;
+    margin-top: 20px;
+    flex-wrap: wrap;
+    height: auto;
+    min-height: 28px;
+    padding: 4px;
+  }
+
+  .taskbar-center {
+    position: relative;
+    transform: none;
+    width: 100%;
+    text-align: center;
+    font-size: 10px;
+    padding: 4px;
+    order: 3;
+  }
+
+  .taskbar-left {
+    order: 1;
+  }
+
+  .taskbar-right {
+    order: 2;
+    margin-left: auto;
+  }
+
+  .start-button,
+  .taskbar-time {
+    font-size: 10px;
+    padding: 3px 6px;
+  }
+
+  /* Start menu mobile */
+  .start-menu {
+    position: relative !important;
+    width: 100% !important;
+    top: auto !important;
+    left: auto !important;
+    margin-top: 20px;
+    max-width: 100%;
+  }
+
+  .start-menu-list li {
+    font-size: 16px;
+    padding: 6px 12px;
+  }
+
+  .start-menu-icon {
+    font-size: 20px;
+    margin-right: 12px;
+  }
+
+  /* CV download window - move to static position on mobile */
+  .cv-download-window {
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    margin: 20px auto;
+    animation: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+  }
+
+  /* Page dividers - remove on mobile */
+  .Page {
+    margin-bottom: 0;
+  }
+
+  /* Job and project text */
+  .experience-window .window-content .job strong,
+  .projects-window .window-content .project strong {
+    font-size: 14px;
+  }
+
+  .experience-window .role {
+    font-size: 14px;
+  }
+
+  /* Buttons */
+  .btn {
+    font-size: 11px;
+    padding: 4px 8px;
+  }
+
+  /* Window close button */
+  .window-close {
+    width: 12px;
+    height: 12px;
+    line-height: 12px;
+    font-size: 10px;
+  }
+
+  /* Floating back button */
+  .floating-back-button {
+    font-size: 16px;
+    padding: 0px 10px 2px 10px;
+    top: 5px;
+    left: 5px;
+  }
+}
+
+/* Extra small mobile devices */
+@media screen and (max-width: 480px) {
+  .cv-container {
+    padding: 0 5px;
+  }
+
+  .name-header {
+    font-size: 1.6rem;
+  }
+
+  .subheading {
+    font-size: 1rem;
+  }
+
+  .window-header h1 {
+    font-size: 14px;
+  }
+
+  .window-content {
+    font-size: 12px;
+    padding: 6px;
+  }
+
+  .experience-window .window-content .job strong,
+  .projects-window .window-content .project strong {
+    font-size: 13px;
+  }
+
+  .experience-window .role {
+    font-size: 13px;
+  }
+
+  .btn {
+    font-size: 10px;
+    padding: 3px 6px;
+  }
+
+  .start-menu-list li {
+    font-size: 14px;
+    padding: 5px 10px;
+  }
+
+  .start-menu-icon {
+    font-size: 18px;
+    margin-right: 10px;
+  }
+
+  .taskbar-center {
+    font-size: 9px;
+  }
+}
+
+/* Tablet adjustments (landscape/portrait) */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  .cv-container {
+    width: 90%;
+    padding: 0 20px;
+  }
+
+  /* Scale down window sizes but keep absolute positioning */
+  .window,
+  .picture-window {
+    transform: scale(0.9);
+    transform-origin: top left;
+  }
+
+  .header-window {
+    transform: scale(0.9);
+    transform-origin: top left;
+  }
+
+  .name-header {
+    font-size: 2.8rem;
+  }
+
+  .subheading {
+    font-size: 1.4rem;
+  }
+}
+
+/* Print media query - keep layout intact */
+@media print {
+  .floating-back-button,
+  .cv-download-window {
+    display: none !important;
+  }
+
+  .cv-container {
+    width: 100%;
+    margin: 0;
+  }
+
+  .window,
+  .picture-window,
+  .header-window {
+    box-shadow: 1px 1px 0 #e0e0e0, 2px 2px 0 #000;
+  }
+}
