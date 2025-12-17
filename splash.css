@@ -1,0 +1,205 @@
+/* Y2K Splash Screen */
+.splash-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* Opaque background matching site greys */
+  background: linear-gradient(135deg, #c0c0c0, #e0e0e0);
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  opacity: 1;
+  transition: opacity 1.2s ease-out;
+  pointer-events: all;
+}
+
+.splash-screen.fade-out {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Grid overlay */
+/* Grid overlay removed per request */
+.splash-screen::before {
+  display: none;
+}
+
+.splash-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  align-items: center;
+}
+
+.splash-title {
+  /* Title will render an SVG of your name (Excelorate) */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #000;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-shadow: 2px 2px 0 #1084d0, 4px 4px 0 #00ffff;
+}
+
+.splash-subtitle {
+  font-family: "orbitron", "Arial", sans-serif;
+  font-size: 14px;
+  color: #000;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  opacity: 0.7;
+}
+
+/* Y2K Geometric Elements */
+.geometric-container {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  animation: rotate 8s linear infinite;
+}
+
+.geometric-shape {
+  position: absolute;
+  background: transparent;
+  border: 2px solid;
+}
+
+.circle-1 {
+  top: 50%;
+  left: 50%;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  border-color: #1084d0;
+  transform: translate(-50%, -50%);
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.circle-2 {
+  top: 50%;
+  left: 50%;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border-color: #00ffff;
+  transform: translate(-50%, -50%);
+  animation: pulse 2.5s ease-in-out infinite reverse;
+}
+
+.square-1 {
+  top: 25px;
+  left: 50%;
+  width: 60px;
+  height: 60px;
+  border-color: #c8ff00;
+  transform: translateX(-50%) rotate(45deg);
+  animation: bounce 1.5s ease-in-out infinite;
+}
+
+.square-2 {
+  bottom: 25px;
+  right: 25px;
+  width: 40px;
+  height: 40px;
+  border-color: #1084d0;
+  animation: slideRight 2s ease-in-out infinite;
+}
+
+/* Loading Bar */
+/* Loading bar removed per request */
+
+.splash-name-svg {
+  width: 520px;
+  max-width: 85vw;
+  height: auto;
+  display: block;
+}
+
+.splash-name-svg svg {
+  width: 100%;
+  height: auto;
+  display: block;
+  /* subtle retro double-drop shadow using site blues/cyan */
+  filter: drop-shadow(2px 2px 0 #1084d0) drop-shadow(4px 4px 0 #00ffff);
+}
+
+/* Animations */
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(0.8);
+    opacity: 0.6;
+  }
+}
+
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateX(-50%) rotate(45deg) translateY(0);
+  }
+  50% {
+    transform: translateX(-50%) rotate(45deg) translateY(-20px);
+  }
+}
+
+@keyframes slideRight {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(20px);
+  }
+}
+
+@keyframes load {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 100%;
+  }
+}

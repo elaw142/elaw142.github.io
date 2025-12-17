@@ -324,7 +324,7 @@ body::before {
   left: 250px;
   opacity: 0;
   transform: scale(0.8);
-  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+  transition: opacity 0.25s ease-out, transform 0.25s ease-out;
   pointer-events: none;
   display: flex;
   flex-direction: column;
@@ -492,7 +492,7 @@ body::before {
   right: 150px;
   opacity: 1;
   transform: scale(1);
-  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+  transition: opacity 0.25s ease-out, transform 0.25s ease-out;
   pointer-events: auto;
   display: flex;
   flex-direction: column;
@@ -547,7 +547,7 @@ body::before {
   left: 400px;
   opacity: 0;
   transform: scale(0.8);
-  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+  transition: opacity 0.25s ease-out, transform 0.25s ease-out;
   pointer-events: none;
   display: flex;
   flex-direction: column;
@@ -590,7 +590,7 @@ body::before {
   left: 300px;
   opacity: 0;
   transform: scale(0.8);
-  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+  transition: opacity 0.25s ease-out, transform 0.25s ease-out;
   pointer-events: none;
   display: flex;
   flex-direction: column;
