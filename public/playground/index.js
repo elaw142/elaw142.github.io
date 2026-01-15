@@ -41,6 +41,11 @@ const recipes = [
     url: "https://downshiftology.com/recipes/roasted-broccoli/",
     rating: 3,
   },
+  {
+    name: "Marry Me Gnocchi",
+    url: "https://www.delish.com/cooking/recipe-ideas/a65655220/marry-me-gnocchi-recipe/",
+    rating: 5,
+  },
 ];
 
 let filteredRecipes = [...recipes];
