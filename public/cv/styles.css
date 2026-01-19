@@ -742,8 +742,7 @@ body::before {
   }
 
   .window,
-  .picture-window,
-  .header-window {
+  .picture-window {
     box-shadow: 1px 1px 0 #e0e0e0, 2px 2px 0 #000;
   }
 }

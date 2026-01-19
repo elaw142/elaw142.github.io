@@ -19,7 +19,7 @@ const recipes = [
   {
     name: "Air Fryer Roast Pork",
     url: "https://www.taste.com.au/recipes/air-fryer-roast-pork-belly-recipe/s2bj5tyh?r=quickeasy/biccuul7",
-    rating: 5,
+    rating: 4.5,
   },
   {
     name: "Apple Fennel Cabbage Slaw",
