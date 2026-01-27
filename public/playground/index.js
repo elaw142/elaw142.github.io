@@ -34,7 +34,7 @@ const recipes = [
   {
     name: "French Union Chicken",
     url: "https://www.dessertfortwo.com/french-onion-chicken-recipe/",
-    rating: 4.5,
+    rating: 4,
   },
   {
     name: "Garlic & Parmesan Roasted Broccoli",
@@ -45,6 +45,11 @@ const recipes = [
     name: "Marry Me Gnocchi",
     url: "https://www.delish.com/cooking/recipe-ideas/a65655220/marry-me-gnocchi-recipe/",
     rating: 5,
+  },
+  {
+    name: "Spicy Peanut Chicken Noodles",
+    url: "https://eatwithclarity.com/spicy-peanut-chicken-noodles/",
+    rating: 4,
   },
 ];
 
@@ -256,7 +261,7 @@ function setupRecipeSearch() {
   searchInput.onkeyup = () => {
     const query = searchInput.value.toLowerCase();
     filteredRecipes = recipes.filter((recipe) =>
-      recipe.name.toLowerCase().includes(query)
+      recipe.name.toLowerCase().includes(query),
     );
     renderRecipes(filteredRecipes);
   };
@@ -287,12 +292,12 @@ function setupRecipeSearch() {
     const newLeft = clamp(
       dragState.startLeft + dx,
       0,
-      window.innerWidth - dragState.el.offsetWidth
+      window.innerWidth - dragState.el.offsetWidth,
     );
     const newTop = clamp(
       dragState.startTop + dy,
       0,
-      window.innerHeight - dragState.el.offsetHeight
+      window.innerHeight - dragState.el.offsetHeight,
     );
     dragState.el.style.left = newLeft + "px";
     dragState.el.style.top = newTop + "px";
@@ -357,7 +362,7 @@ function setupRecipeSearch() {
 
   // Attach to all playground windows
   const windows = document.querySelectorAll(
-    ".pathfinder-window, .recipes-window, .easter-egg-window, .construction-window"
+    ".pathfinder-window, .recipes-window, .easter-egg-window, .construction-window",
   );
   windows.forEach(attach);
 
@@ -374,7 +379,7 @@ function setupRecipeSearch() {
       onMouseMove(fauxEvent);
       ev.preventDefault();
     },
-    { passive: false }
+    { passive: false },
   );
 
   document.addEventListener("touchend", () => {
