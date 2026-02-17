@@ -51,6 +51,16 @@ const recipes = [
     url: "https://eatwithclarity.com/spicy-peanut-chicken-noodles/",
     rating: 4,
   },
+  {
+    name: "Peppercorn Steak Sauce",
+    url: "https://simplehomeedit.com/recipe/perfect-steak-with-peppercorn-sauce/",
+    rating: 5,
+  },
+  {
+    name: "Air Fryer Steak",
+    url: "https://www.bbcgoodfood.com/recipes/air-fryer-steak",
+    rating: 5,
+  },
 ];
 
 let filteredRecipes = [...recipes];
