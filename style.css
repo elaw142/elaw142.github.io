@@ -62,6 +62,30 @@ body::before {
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  will-change: transform;
+  backface-visibility: hidden;
+  transform: translate3d(0, 0, 0);
+}
+
+body.splash-active {
+  overflow: hidden;
+}
+
+body.splash-active .main-container {
+  pointer-events: none;
+}
+
+.main-container.splash-drag-in {
+  transform-origin: top left;
+}
+
+@keyframes dragWindowIn {
+  0% {
+    transform: translate3d(-90vw, -48vh, 0);
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
 }
 
 canvas.webgl {
@@ -211,6 +235,15 @@ canvas.webgl {
     right: 10px;
     bottom: 20px;
     box-shadow: 1px 1px 0 #fff, 2px 2px 0 #000;
+  }
+
+  @keyframes dragWindowIn {
+    0% {
+      transform: translate3d(-115vw, -58vh, 0);
+    }
+    100% {
+      transform: translate3d(0, 0, 0);
+    }
   }
 
   .github-window,

@@ -1,10 +1,11 @@
-let currentMode = "draw-start";
+﻿let currentMode = "draw-start";
 const gridSize = 25;
 let gridCells = [];
 let isMouseDown = false;
 
 // Navigation
 function goHome() {
+  sessionStorage.setItem("skipSplashOnce", "1");
   window.location.href = "/";
 }
 

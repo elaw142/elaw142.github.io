@@ -436,6 +436,7 @@
     </div>
     <script>
       function goHome() {
+        sessionStorage.setItem("skipSplashOnce", "1");
         window.location.href = "/";
       }
       window.addEventListener("DOMContentLoaded", () => {

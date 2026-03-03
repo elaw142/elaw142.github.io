@@ -135,6 +135,19 @@ renderer.setSize(sizes.width, sizes.height);
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 renderer.setClearColor(0x000000, 0); // Transparent background
 
+const SPLASH_MAX_FPS = 30;
+const SPLASH_FRAME_INTERVAL = 1000 / SPLASH_MAX_FPS;
+let lastSplashRenderTime = 0;
+
+const applyRendererQuality = () => {
+  const isSplashActive = document.body.classList.contains("splash-active");
+  const maxPixelRatio = isSplashActive ? 1 : 2;
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, maxPixelRatio));
+};
+
+applyRendererQuality();
+document.addEventListener("splash:complete", applyRendererQuality, { once: true });
+
 // Calculate the aspect ratio of the main-container
 const mainContainer = document.querySelector(".main-container");
 const updateSizes = () => {
@@ -178,6 +191,13 @@ const clock = new THREE.Clock();
 
 const tick = () => {
   const elapsedTime = clock.getElapsedTime();
+  const now = performance.now();
+  const isSplashActive = document.body.classList.contains("splash-active");
+
+  if (isSplashActive && now - lastSplashRenderTime < SPLASH_FRAME_INTERVAL) {
+    window.requestAnimationFrame(tick);
+    return;
+  }
 
   // Smooth mouse following with easing
   if (mouseFollowEnabled) {
@@ -201,6 +221,9 @@ const tick = () => {
 
   // Render
   renderer.render(scene, camera);
+  if (isSplashActive) {
+    lastSplashRenderTime = now;
+  }
 
   // Call tick again on the next frame
   window.requestAnimationFrame(tick);
@@ -208,14 +231,29 @@ const tick = () => {
 
 tick();
 
-document.addEventListener("DOMContentLoaded", () => {
+let popupsStarted = false;
+
+const startPopupSequence = () => {
+  if (popupsStarted) return;
+  popupsStarted = true;
+
   setTimeout(() => {
     document.querySelector(".github-window").classList.add("visible");
     setTimeout(() => {
       document.querySelector(".cv-window").classList.add("visible");
       setTimeout(() => {
         document.querySelector(".playground-window").classList.add("visible");
-      }, 750);
-    }, 750);
-  }, 1000);
+      }, 420);
+    }, 420);
+  }, 180);
+};
+
+document.addEventListener("splash:complete", startPopupSequence, {
+  once: true,
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+  if (!document.querySelector(".splash-screen")) {
+    startPopupSequence();
+  }
 });
