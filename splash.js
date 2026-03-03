@@ -145,10 +145,7 @@ export function initSplashScreen() {
     const step = (now) => {
       if (splashDismissed) return;
 
-      const progress = Math.min(
-        (now - startTime) / CURSOR_EXIT_DURATION_MS,
-        1,
-      );
+      const progress = Math.min((now - startTime) / CURSOR_EXIT_DURATION_MS, 1);
       const eased = easeOutCubic(progress);
       const cursorX = cursorStartX + (cursorEndX - cursorStartX) * eased;
 

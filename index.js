@@ -72,7 +72,7 @@ fontLoader.load("/static/fonts/excelorate_regular.json", (font) => {
   for (let i = 0; i < 1000; i++) {
     const donut = new THREE.Mesh(
       donutGeometry,
-      i % 2 === 0 ? material : wireframeMaterial
+      i % 2 === 0 ? material : wireframeMaterial,
     );
     donut.position.x = (Math.random() - 0.5) * 10;
     donut.position.y = (Math.random() - 0.5) * 10;
@@ -100,7 +100,7 @@ const camera = new THREE.PerspectiveCamera(
   75,
   sizes.width / sizes.height,
   0.1,
-  100
+  100,
 );
 camera.position.x = 0;
 camera.position.y = 0;
@@ -146,7 +146,9 @@ const applyRendererQuality = () => {
 };
 
 applyRendererQuality();
-document.addEventListener("splash:complete", applyRendererQuality, { once: true });
+document.addEventListener("splash:complete", applyRendererQuality, {
+  once: true,
+});
 
 // Calculate the aspect ratio of the main-container
 const mainContainer = document.querySelector(".main-container");
