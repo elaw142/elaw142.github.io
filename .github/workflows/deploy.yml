@@ -19,6 +19,7 @@ jobs:
       - name: Install and build
         run: |
           npm install
+          chmod +x node_modules/.bin/vite
           npm run build
 
       - name: Deploy to server
