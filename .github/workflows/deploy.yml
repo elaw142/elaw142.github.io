@@ -1,0 +1,41 @@
+name: Deploy Portfolio
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install and build
+        run: |
+          npm install
+          npm run build
+
+      - name: Deploy to server
+        uses: appleboy/ssh-action@v1
+        with:
+          host: ${{ vars.SERVER_HOST }}
+          username: opc
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            rm -rf ~/portfolio/*
+
+      - name: Copy files
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ vars.SERVER_HOST }}
+          username: opc
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          source: "dist/*"
+          target: "/home/opc/portfolio"
+          strip_components: 1
