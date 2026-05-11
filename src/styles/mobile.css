@@ -1,0 +1,130 @@
+@media (max-width: 768px) {
+  body {
+    min-height: 100dvh;
+    height: 100dvh;
+    overflow: hidden;
+  }
+
+  .scene-vignette {
+    background:
+      radial-gradient(circle at 50% 39%, transparent 0 32%, rgba(13, 17, 23, 0.24) 58%, rgba(13, 17, 23, 0.86) 100%),
+      linear-gradient(180deg, rgba(13, 17, 23, 0.08), rgba(13, 17, 23, 0.62));
+  }
+
+  .scroll-depth {
+    display: none;
+  }
+
+  .hud-panel {
+    top: auto;
+    right: 0.9rem;
+    bottom: calc(4.8rem + env(safe-area-inset-bottom));
+    left: 0.9rem;
+    width: auto;
+    max-height: min(46dvh, 26rem);
+    padding: 1.1rem;
+    transform: translateY(0.75rem);
+  }
+
+  .hud-panel.active {
+    transform: translateY(0);
+  }
+
+  .hud-panel.side-right,
+  .hud-panel.side-left {
+    right: 0.9rem;
+    left: 0.9rem;
+  }
+
+  .hud-label {
+    margin-bottom: 0.8rem;
+    font-size: 0.62rem;
+  }
+
+  .hud-title {
+    font-size: 1.35rem;
+  }
+
+  .hud-subtitle,
+  .hud-copy,
+  .project-description,
+  .record-description,
+  .contact-status {
+    font-size: 0.74rem;
+  }
+
+  .hud-meta-row,
+  .contact-row,
+  .record-entry {
+    grid-template-columns: 1fr;
+    gap: 0.22rem;
+  }
+
+  .record-entry {
+    padding: 0.75rem 0;
+  }
+
+  .mobile-tabs {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 5;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    padding: 0.55rem 0.75rem calc(0.55rem + env(safe-area-inset-bottom));
+    border-top: 1px solid var(--color-hud-border);
+    background: rgba(0, 14, 20, 0.86);
+    backdrop-filter: blur(10px);
+  }
+
+  .mobile-tab {
+    min-height: 44px;
+    border: 1px solid rgba(0, 229, 204, 0.2);
+    color: var(--color-hud-dim);
+    background: rgba(0, 229, 204, 0.04);
+    cursor: pointer;
+    font-size: 0.68rem;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+
+  .mobile-tab[aria-current="true"] {
+    border-color: var(--color-hud-border);
+    color: var(--color-rune);
+    background: rgba(0, 229, 204, 0.12);
+  }
+}
+
+@media (max-width: 420px) {
+  .hud-panel {
+    right: 0.65rem;
+    left: 0.65rem;
+    padding: 0.95rem;
+  }
+
+  .project-name {
+    font-size: 0.88rem;
+  }
+
+  .mobile-tabs {
+    padding-right: 0.45rem;
+    padding-left: 0.45rem;
+  }
+
+  .mobile-tab {
+    font-size: 0.6rem;
+  }
+}
+
+@media (max-width: 768px) and (orientation: landscape) {
+  .hud-panel {
+    top: 0.85rem;
+    right: 0.85rem;
+    bottom: calc(4.5rem + env(safe-area-inset-bottom));
+    left: auto;
+    width: min(24rem, 44vw);
+    max-height: calc(100dvh - 5.8rem);
+  }
+}

@@ -3,69 +3,48 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Elliot Lawrence</title>
-    <link rel="stylesheet" href="./style.css" />
-    <link rel="stylesheet" href="./splash.css" />
-    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+    <meta
+      name="description"
+      content="Elliot Lawrence, full stack developer and AWS cloud support associate apprentice in Auckland, New Zealand."
+    />
+    <title>Elliot Lawrence | The Artefact</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
   </head>
   <body>
-    <!-- Y2K Splash Screen -->
-    <div class="splash-screen">
-      <div class="splash-content">
-        <div class="geometric-container">
-          <div class="geometric-shape circle-1"></div>
-          <div class="geometric-shape circle-2"></div>
-          <div class="geometric-shape square-1"></div>
-          <div class="geometric-shape square-2"></div>
-        </div>
+    <canvas
+      class="scene-canvas"
+      data-scene-canvas
+      aria-hidden="true"
+    ></canvas>
+    <div class="scene-vignette" aria-hidden="true"></div>
+    <div class="scroll-depth" aria-hidden="true"></div>
 
-        <div class="splash-title">
-          <div
-            id="splash-name"
-            class="splash-name-svg"
-            aria-hidden="true"
-          ></div>
-        </div>
-        <p class="splash-subtitle">Welcome</p>
-      </div>
-    </div>
+    <main id="hud-root" class="hud-root" aria-live="polite"></main>
+    <nav
+      id="mobile-tabs"
+      class="mobile-tabs"
+      aria-label="Artefact face selector"
+    ></nav>
 
-    <div class="main-container">
-      <div class="window-header">
-        <br />
-        <span class="window-close">X</span>
-      </div>
-      <canvas class="webgl"></canvas>
+    <noscript>
+      <section class="noscript-panel">
+        <h1>Elliot Lawrence</h1>
+        <p>
+          Full stack developer and AWS cloud support associate apprentice based
+          in Auckland, New Zealand.
+        </p>
+        <a href="mailto:elliotmaclawrence@gmail.com"
+          >elliotmaclawrence@gmail.com</a
+        >
+      </section>
+    </noscript>
 
-      <div class="github-window">
-        <div class="window-header">
-          Github<span class="window-close">X</span>
-        </div>
-        <div class="window-content">
-          <a href="https://github.com/elaw142" target="_blank" class="btn">
-            Click Here!
-          </a>
-        </div>
-      </div>
-
-      <div class="cv-window">
-        <div class="window-header">CV<span class="window-close">X</span></div>
-        <div class="window-content">
-          <a href="/cv/" class="btn"> View Now! </a>
-        </div>
-      </div>
-    </div>
-
-    <div class="playground-window">
-      <div class="window-header">
-        Playground<span class="window-close">X</span>
-      </div>
-      <div class="window-content">
-        <a href="/playground/" class="btn"> Go There! </a>
-      </div>
-    </div>
-
-    <script type="module" src="./index.js"></script>
+    <script type="module" src="/src/main.js"></script>
   </body>
 </html>
